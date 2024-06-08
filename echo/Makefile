@@ -1,8 +1,8 @@
 TARGET = main
 
 # Default target chip.
-#MCU ?= STM32F103C8
-MCU ?= STM32L432KC
+MCU ?= STM32F103C8
+#MCU ?= STM32L432KC
 
 # Define target chip information.
 ifeq ($(MCU), STM32L432KC)
@@ -100,7 +100,7 @@ OBJS += $(C_SRC:.c=.o)
 all: $(TARGET).bin
 
 ./$(ST_MCU_DEF)_vt.S:
-	python generate_vt.py $(ST_MCU_DEF) $(MCU_SPEC)
+	python3 generate_vt.py $(ST_MCU_DEF) $(MCU_SPEC)
 
 %.o: %.S
 	$(CC) -x assembler-with-cpp $(ASFLAGS) $< -o $@
